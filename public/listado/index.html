@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__logo-container">
+            <img class="header__logo" src="logo.png" alt="Logo">
+        </div>
+        <nav class="header__nav" id="menu">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="/tienda/index.html">Atras</a></li>
+            </ul>
+        </nav>
+    </header>  
+    <main>
+        <div class="listado-container">
+            <div class="listado-title-container">
+                <h1 class="listado-title">Listado</h1>
+            </div>
+            <table class="listado-table">
+                <thead>
+                    <tr>
+                        <th>Vista</th>
+                        <th>Nombre</th>
+                        <th>ID</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="product-container">
+                    <!-- Los productos se insertarán aquí dinámicamente -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td>Total:</td>
+                        <td id="total-amount">$0.00</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

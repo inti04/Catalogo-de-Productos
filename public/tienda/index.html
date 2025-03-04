@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/c32430964c.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bottom-footer">
+        <header class="header">
+            <div class="header__logo-container">
+                <img class="header__logo" src="logo.png" alt="logo de Catalogo">
+            </div>       
+            <div class="buscar">
+                <input type="text" class="search-box" placeholder="Buscar..." required>
+            </div>
+            <div class="container__icon-shop">
+                <div class="container-cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-cart">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                    </svg>   
+                    <div class="count-product">
+                        <span id="contador-productos">0</span>
+                    </div>    
+                </div>
+                <div class="container-cart-product hidden-cart">
+                    <div class="row-product hidden">
+                        <div class="cart-product">
+                            <div class="info-cart-product"></div>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                </svg>
+                        </div>
+                    </div>
+                    <div class="cart-total hidden">
+                        <h3>Total:</h3>
+                        <span class="total-pagar" id="total-pagar">$0</span>
+                    </div>
+                    <p class="cart-empty hidden">El carrito esta vacio</p>
+                </div>               
+            </div>
+            <div class="header__menu-toggle" id="menu-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-menu">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h18M3 12h18M3 19h18" />
+                </svg>
+            </div>
+            <nav class="header__nav" id="menu">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item">
+                        <a href="#" id="Servicios">Servicios</a>
+                        <ul class="menu-vertical">
+                            <li><a href="#" class="servicio" data-servicio="montaje">Montaje</a></li>
+                            <li><a href="#" class="servicio" data-servicio="ambientacion">Ambientación</a></li>
+                            <li><a href="#" class="servicio" data-servicio="vestuario">Vestuario</a></li>
+                            <li><a href="#" class="servicio" data-servicio="atras">Atras</a></li>
+                        </ul>
+                    </li>
+                    <li class="header__nav-item"><a href="/listado/index.html">Pedido</a></li>
+                    <li class="header__nav-item"><a href="/gestion/index.html">Gestion</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="container-items" id="product-container">
+                <!-- Los productos se insertarán aquí dinámicamente -->
+            </div>
+        </main>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
+

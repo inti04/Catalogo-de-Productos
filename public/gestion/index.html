@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header> 
+        <h1>Gestión de Productos</h1> 
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="../tienda/index.html">Atras</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="productos"></section>
+        <section id="formulario">
+            <form id="productoForm" enctype="multipart/form-data">
+                <div class="sub-container">
+                    <h3 class="sub">Nombre:</h3>
+                    <input type="text" name="nombre" class="input-nombre" placeholder="Nombre" required>
+                </div>
+                <div class="sub-container">
+                    <h3 class="sub">Precio:</h3>
+                    <input type="number" name="precio" class="input-precio" placeholder="Precio" required>
+                </div>               
+                <div class="sub-container">
+                    <h3 class="sub">Servicio:</h3>
+                    <select name="servicio" class="input-servicio" required>
+                        <option value="montaje">Montaje</option>
+                        <option value="ambientacion">Ambientación</option> 
+                        <option value="vestuario">Vestuario</option>
+                        <option value="ninguno">Ninguno</option>
+                    </select>
+                </div>         
+                <div class="sub-container">
+                    <h3 class="sub">ID:</h3>
+                    <input type="text" name="id" class="input-id" placeholder="ID" required>
+                </div>    
+                <div class="sub-container">
+                    <h3 class="sub">Descripción:</h3>
+                    <textarea name="descripcion" class="input-descripcion" placeholder="Descripción" required></textarea>
+                </div>   
+                <div class="sub-container">
+                    <h3 class="sub">Imagen 1:</h3>
+                    <label for="file-upload1" class="custom-file-upload">
+                        <i class="fa fa-cloud-upload"></i> Seleccionar Imagen 1
+                    </label>
+                    <input id="file-upload1" type="file" name="imagen1" class="input-imagen" accept="image/*">
+                    <div class="image-preview" id="imagePreview1"></div>
+                </div>
+                <div class="sub-container">
+                    <h3 class="sub">Imagen 2:</h3>
+                    <label for="file-upload2" class="custom-file-upload">
+                        <i class="fa fa-cloud-upload"></i> Seleccionar Imagen 2
+                    </label>
+                    <input id="file-upload2" type="file" name="imagen2" class="input-imagen" accept="image/*">
+                    <div class="image-preview" id="imagePreview2"></div>
+                </div>
+                <div class="sub-container">
+                    <h3 class="sub">Imagen 3:</h3>
+                    <label for="file-upload3" class="custom-file-upload">
+                        <i class="fa fa-cloud-upload"></i> Seleccionar Imagen 3
+                    </label>
+                    <input id="file-upload3" type="file" name="imagen3" class="input-imagen" accept="image/*">
+                    <div class="image-preview" id="imagePreview3"></div>
+                </div>
+                <div class="button-container">
+                    <button type="submit">Agregar</button>
+                </div>
+            </form>  
+        </section> 
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
