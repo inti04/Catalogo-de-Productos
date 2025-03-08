@@ -3,6 +3,7 @@ const path = require('path');
 const app = express();
 const port = 3000;
 const productRoutes = require('./routes/productRoutes');
+const pool = require('./db'); // Asegúrate de importar la conexión a la base de datos
 
 // Middleware para registrar todas las solicitudes
 app.use((req, res, next) => {
@@ -23,9 +24,15 @@ app.get('/tienda/index.html', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/tienda/index.html'));
 });
 
-// Ruta de la API
-app.get('/api/products', (req, res) => {
-    res.json({ products: [] }); // Asegúrate de devolver JSON válido
+// Ruta de la API para obtener productos
+app.get('/api/products', async (req, res) => {
+    try {
+        const [rows] = await pool.query('SELECT * FROM productos');
+        res.json(rows);
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        res.status(500).json({ error: 'Error fetching products' });
+    }
 });
 
 // Agregar una ruta de estado

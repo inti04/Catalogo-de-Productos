@@ -2,15 +2,16 @@
 
 export const createProductHTML = (product) => `
     <div class="item">
-        <a href="/pagina de producto/index.html?productId=${product.Id}">
+        <a href="/pagina de producto/index.html?productId=${product.id}">
             <figure>
-                <img src="${product.Imagen1}" alt="${product.Nombre}">
+                <img src="${product.imagen1}" alt="${product.nombre}">
             </figure>
         </a>
             <div class="info-product">
-                <h2>${product.Nombre}</h2>
-                <p>$${product.Precio}</p>
-                <button class="btn-add-cart" data-id="${product.Id}">Agregar al carrito</button>
+                <h2>${product.nombre}</h2>
+                <p>cantidad: ${product.cantidad}</p>
+                <p>$${product.precio}</p>
+                <button class="btn-add-cart" data-id="${product.id}">Agregar al carrito</button>
             </div>
     </div>
 `;

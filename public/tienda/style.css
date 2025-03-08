@@ -166,12 +166,6 @@ body{
     flex:0.8;
 }
 
-.info-cart-product{
-    display: flex;
-    justify-content: space-between;
-    flex:0.8;
-}
-
 .titulo-producto-carrito{
     font-size: 20px;
 }
@@ -268,11 +262,11 @@ body{
 }
 
 .info-product {
-    padding: 15px 30px;
+    padding: 10px 20px;
     line-height: 2;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 2px;
 }
 
 .item img {
