@@ -45,12 +45,12 @@ exports.addProduct = async (req, res) => {
         const imagen2 = req.files.imagen2 ? '/uploads/' + req.files.imagen2[0].filename : null;
         const imagen3 = req.files.imagen3 ? '/uploads/' + req.files.imagen3[0].filename : null;
 
-        if (!nombre || !precio || !servicio || !id || !descripcion) {
+        if (!nombre || !precio || !cantidad || !servicio || !id || !descripcion) {
             return res.status(400).json({ success: false, message: 'Todos los campos son obligatorios' });
         }
 
-        const query = 'INSERT INTO productos (nombre, precio, servicio, id, descripcion, imagen1, imagen2, imagen3) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-        const [result] = await pool.query(query, [nombre, precio, servicio, id, descripcion, imagen1, imagen2, imagen3]);
+        const query = 'INSERT INTO productos (nombre, precio, cantidad, servicio, id, descripcion, imagen1, imagen2, imagen3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        const [result] = await pool.query(query, [nombre, precio, cantidad, servicio, id, descripcion, imagen1, imagen2, imagen3]);
 
         res.json({ success: true, message: 'Producto agregado con éxito' });
     } catch (err) {

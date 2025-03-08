@@ -23,15 +23,16 @@ DROP TABLE IF EXISTS `productos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `productos` (
-  `Nombre` varchar(40) NOT NULL,
-  `Id` int NOT NULL,
-  `Precio` float NOT NULL,
-  `Imagen1` varchar(255) DEFAULT NULL,
-  `Servicio` enum('montaje','ambientacion','vestuario') NOT NULL,
-  `Descripcion` varchar(500) DEFAULT NULL,
-  `Imagen2` varchar(255) DEFAULT NULL,
-  `Imagen3` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
+  `nombre` varchar(40) NOT NULL,
+  `precio` float NOT NULL,
+  `cantidad` int NOT NULL,
+  `servicio` enum('montaje','ambientacion','vestuario') NOT NULL,
+  `id` int NOT NULL,
+  `descripcion` varchar(500) DEFAULT NULL,
+  `imagen1` varchar(255) DEFAULT NULL,
+  `imagen2` varchar(255) DEFAULT NULL,
+  `imagen3` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
