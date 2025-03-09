@@ -298,3 +298,18 @@ body{
     cursor: pointer;
     border-radius: 10px;
 }
+
+/* Estilos para productos agotados */
+.item.out-of-stock {
+    opacity: 0.5; /* Oscurece el producto */
+    pointer-events: none; /* Deshabilita interacciones */
+}
+
+.item.out-of-stock img {
+    filter: grayscale(100%); /* Convierte la imagen a escala de grises */
+}
+
+.item.out-of-stock .btn-add-cart {
+    background-color: #ccc; /* Cambia el color del botón */
+    cursor: not-allowed; /* Cambia el cursor a "no permitido" */
+}

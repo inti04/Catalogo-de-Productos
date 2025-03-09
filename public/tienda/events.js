@@ -60,7 +60,7 @@ document.addEventListener('click', e => {
             id: e.target.getAttribute('data-id'),
             quantity: 1,
             title: product.querySelector('h2').textContent,
-            price: product.querySelector('p').textContent,
+            precio: product.querySelectorAll('p')[1].textContent,
             image: product.querySelector('img').src
         };
         addToCart(infoProduct);

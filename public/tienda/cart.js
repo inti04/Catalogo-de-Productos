@@ -5,12 +5,41 @@ import { rowProduct, cartEmpty, cartTotal, valorTotal, countProduct } from './do
 
 export let allProducts = JSON.parse(localStorage.getItem('cartProducts')) || []; // Obtiene los productos del carrito desde localStorage o inicializa un array vacío
 
+// Función para actualizar la cantidad en la página principal
+const updateProductQuantity = (productId, newQuantity) => {
+    const quantityElement = document.querySelector(`.product-quantity[data-id="${productId}"]`);
+    const productContainer = document.querySelector(`.item[data-id="${productId}"]`);
+    const addButton = document.querySelector(`.btn-add-cart[data-id="${productId}"]`);
+
+    if (quantityElement) {
+        quantityElement.textContent = newQuantity;
+    }
+
+    if (productContainer && addButton) {
+        if (newQuantity === 0) {
+            productContainer.classList.add('out-of-stock');
+            addButton.disabled = true;
+        } else {
+            productContainer.classList.remove('out-of-stock');
+            addButton.disabled = false;
+        }
+    }
+};
+
 // Función para agregar un producto al carrito
 export const addToCart = (product) => {
-    const exist = allProducts.some(p => p.id === product.id); // Verifica si el producto ya existe en el carrito
+    const productId = product.id;
+    const quantityElement = document.querySelector(`.product-quantity[data-id="${productId}"]`);
+
+    // Verificar si la cantidad del producto es 0
+    if (quantityElement && parseInt(quantityElement.textContent) === 0) {
+        alert('Este producto está agotado.'); // Mostrar un mensaje de alerta
+        return; // Salir de la función sin agregar el producto al carrito
+    }
+
+    const exist = allProducts.some(p => p.id === product.id);
 
     if (exist) {
-        // Si el producto ya existe, incrementa su cantidad
         allProducts = allProducts.map(p => {
             if (p.id === product.id) {
                 p.quantity++;
@@ -18,19 +47,41 @@ export const addToCart = (product) => {
             return p;
         });
     } else {
-        // Si el producto no existe, agrégalo al carrito
         allProducts = [...allProducts, product];
     }
 
-    localStorage.setItem('cartProducts', JSON.stringify(allProducts)); // Guarda el carrito actualizado en localStorage
-    showHTML(); // Actualiza la interfaz de usuario
+    // Disminuir la cantidad en la página principal
+    if (quantityElement) {
+        let currentQuantity = parseInt(quantityElement.textContent);
+        if (currentQuantity > 0) {
+            currentQuantity--;
+            quantityElement.textContent = currentQuantity;
+            updateProductQuantity(productId, currentQuantity); // Actualiza la interfaz
+        }
+    }
+
+    localStorage.setItem('cartProducts', JSON.stringify(allProducts));
+    showHTML();
 };
 
 // Función para eliminar un producto del carrito
 export const removeFromCart = (title) => {
-    allProducts = allProducts.filter(product => product.title !== title); // Filtra el producto a eliminar
-    localStorage.setItem('cartProducts', JSON.stringify(allProducts)); // Guarda el carrito actualizado en localStorage
-    showHTML(); // Actualiza la interfaz de usuario
+    const productToRemove = allProducts.find(product => product.title === title);
+    if (productToRemove) {
+        // Restaurar la cantidad en la página principal
+        const productId = productToRemove.id;
+        const quantityElement = document.querySelector(`.product-quantity[data-id="${productId}"]`);
+        if (quantityElement) {
+            let currentQuantity = parseInt(quantityElement.textContent);
+            currentQuantity += productToRemove.quantity;
+            quantityElement.textContent = currentQuantity;
+            updateProductQuantity(productId, currentQuantity); // Actualiza la interfaz
+        }
+
+        allProducts = allProducts.filter(product => product.title !== title);
+        localStorage.setItem('cartProducts', JSON.stringify(allProducts));
+        showHTML();
+    }
 };
 
 // Función para mostrar el contenido del carrito en la interfaz de usuario
@@ -61,7 +112,7 @@ export const showHTML = () => {
             <div class="info-cart-product"> 
                 <span class="cantidad-producto-carrito">${product.quantity}</span>
                 <p class="titulo-producto-carrito">${product.title}</p>
-                <span class="precio-producto-carrito">${product.price}</span>
+                <span class="precio-producto-carrito">${product.precio}</span>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -69,7 +120,7 @@ export const showHTML = () => {
         
         rowProduct.append(containerProduct); // Agrega el producto al contenedor del carrito
         
-        total += parseFloat(product.quantity * product.price.slice(1)); // Calcula el total a pagar
+        total += parseFloat(product.quantity * product.precio.slice(1)); // Calcula el total a pagar
         totalOfProduct += product.quantity; // Calcula el total de productos
     });
     

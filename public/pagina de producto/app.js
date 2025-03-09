@@ -19,21 +19,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderProductDetails = (product) => {
         sliderContainer.innerHTML = `
             <div class="slider-section"> 
-                <img src="${product.Imagen1}" alt="${product.Nombre}">
+                <img src="${product.imagen1}" alt="${product.nombre}">
             </div>
             <div class="slider-section">
-                <img src="${product.Imagen2}" alt="${product.Nombre}">
+                <img src="${product.imagen2}" alt="${product.nombre}">
             </div>
             <div class="slider-section">
-                <img src="${product.Imagen3}" alt="${product.Nombre}">
+                <img src="${product.imagen3}" alt="${product.nombre}">
             </div>
         `;
 
         productContainer.innerHTML = `
             <div class="container-info-product">
-                <div class="container-title">${product.Nombre}</div>
+                <div class="container-title">${product.nombre}</div>
                 <div class="container-price">
-                    <span>$${product.Precio}</span>
+                    <span>$${product.precio}</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="chevron-rigth-icon">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                     </svg> 
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </svg> 
                         </div>
                         <div class="text-description">
-                            <p>${product.Descripcion}</p>
+                            <p>${product.descripcion}</p>
                         </div>
                     </div>
                 </div>

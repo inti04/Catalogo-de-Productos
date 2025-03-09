@@ -26,13 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${product.title}</td>
                 <td>${product.id}</td>
                 <td>${product.quantity}</td>
-                <td>${product.price}</td>
+                <td>${product.precio}</td>
                 <td><button class="eliminar" data-id="${product.id}">Eliminar</button></td>
             `;
 
             productContainer.appendChild(row);
             // Calcular el total del carrito
-            total += parseFloat(product.price.slice(1)) * product.quantity;
+            total += parseFloat(product.precio.slice(1)) * product.quantity;
         });
 
         // Mostrar el total en el elemento correspondiente
