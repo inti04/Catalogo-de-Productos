@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const searchBox = document.querySelector('.search-box');
             searchBox.addEventListener('input', function(event) {
                 const searchTerm = event.target.value.toLowerCase();
-                const filteredProducts = products.filter(product => product.Nombre.toLowerCase().includes(searchTerm));
+                const filteredProducts = products.filter(product => product.nombre.toLowerCase().includes(searchTerm));
                 displayProducts(filteredProducts);
             });
         })

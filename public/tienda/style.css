@@ -116,7 +116,7 @@ body{
 .icon-cart{
     position: absolute;
     top: 8px;
-    right: 310px;
+    right: 382px;
     width: 40px;
     height: 40px;   
     stroke: #000;  
@@ -126,7 +126,7 @@ body{
 .count-product{
     position: absolute ;
     top: 32px;
-    right: 330px;
+    right: 402px;
     width: 25px;
     height: 25px;
     color: #fff;
@@ -144,7 +144,7 @@ body{
 .container-cart-product{
     position: absolute;
     top: 52px;
-    right: 340px;
+    right: 412px;
     background-color: #fff;
     width: 400px;
     z-index: 1;
