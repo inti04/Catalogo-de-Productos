@@ -3,7 +3,8 @@ const path = require('path');
 const app = express();
 const port = 3000;
 const productRoutes = require('./routes/productRoutes');
-const pool = require('./db'); // Asegúrate de importar la conexión a la base de datos
+const pool = require('./db');
+const { uploadDir } = require('./middlewares/uploadRoute'); // Importar la ruta de uploads desde config.js
 
 // Middleware para registrar todas las solicitudes
 app.use((req, res, next) => {
@@ -11,10 +12,11 @@ app.use((req, res, next) => {
     next();
 });
 
+// Servir archivos estáticos desde la carpeta "public"
 app.use(express.static(path.join(__dirname, '../public')));
-app.use('/gestion', express.static(path.join(__dirname, '../public/gestion'))); // Añadir esto para servir archivos desde la carpeta gestion
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
+// Servir archivos estáticos desde la carpeta "uploads"
+app.use('/uploads', express.static(uploadDir)); // Usar uploadDir desde config.js
 
 // Usar las rutas de productos
 app.use('/api', productRoutes);
