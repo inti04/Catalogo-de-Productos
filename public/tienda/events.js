@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         displayProducts(products);
                     } else {
                         // Filtra y muestra los productos según el servicio seleccionado
-                        const filteredProducts = products.filter(product => product.Servicio === servicio);
+                        const filteredProducts = products.filter(product => product.servicio === servicio);
                         displayProducts(filteredProducts);
                     }
                 });

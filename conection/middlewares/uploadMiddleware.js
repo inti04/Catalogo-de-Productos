@@ -1,21 +1,17 @@
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-const { uploadDir } = require('./uploadRoute'); // Importar la ruta desde config.js
+const { uploadDir } = require('./uploadRoute');
 
 // Verificar si la ruta ya existe
 if (!fs.existsSync(uploadDir)) {
-    // Si no existe, crear el directorio
     fs.mkdirSync(uploadDir, { recursive: true });
     console.log('Uploads directory created successfully.');
 } else {
-    // Si existe, verificar si es un directorio
     const stats = fs.lstatSync(uploadDir);
     if (!stats.isDirectory()) {
-        // Si no es un directorio, mostrar un error
         console.error(`Error: ${uploadDir} exists but is not a directory.`);
     } else {
-        // Si es un directorio, no hacer nada
         console.log('Uploads directory already exists.');
     }
 }
@@ -27,7 +23,9 @@ try {
             cb(null, uploadDir);
         },
         filename: (req, file, cb) => {
-            cb(null, Date.now() + path.extname(file.originalname)); // Generar un nombre único para cada archivo
+            // Generar un nombre único usando Date.now() y un número aleatorio
+            const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+            cb(null, uniqueSuffix + path.extname(file.originalname));
         }
     });
 } catch (error) {

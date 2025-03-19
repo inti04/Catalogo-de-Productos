@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Producto</title>
-    <link rel="stylesheet" href="../gestion/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header> 
-        <h1>Edición de Productos</h1> 
+    <header>
+        <h1>Editar Producto</h1>
         <nav class="header__nav">
             <ul class="header__nav-list">
                 <li class="header__nav-item"><a href="../tienda/index.html">Atras</a></li>
@@ -19,16 +19,14 @@
         <section id="buscador">
             <form id="buscadorForm">
                 <div class="sub-container">
-                    <h3 class="sub">Buscar por ID:</h3>
-                    <input type="text" name="buscarId" class="input-id" placeholder="ID del Producto" required>
-                </div>
-                <div class="button-container">
+                    <h3 class="sub">Buscar:</h3>
+                    <input type="text" name="idBuscar" class="input-id" placeholder="ID del producto" required>
                     <button type="submit">Buscar</button>
                 </div>
             </form>
         </section>
-        <section id="formulario" style="display: none;">
-            <form id="productoForm" enctype="multipart/form-data">
+        <section id="productoEditado" style="display: none;">
+            <form id="productoEditForm" enctype="multipart/form-data">
                 <div class="sub-container">
                     <h3 class="sub">Nombre:</h3>
                     <input type="text" name="nombre" class="input-nombre" placeholder="Nombre" required>
@@ -36,7 +34,7 @@
                 <div class="sub-container">
                     <h3 class="sub">Precio:</h3>
                     <input type="number" name="precio" class="input-precio" placeholder="Precio" required>
-                </div>               
+                </div>
                 <div class="sub-container">
                     <h3 class="sub">Cantidad:</h3>
                     <input type="number" name="cantidad" class="input-cantidad" placeholder="Cantidad" required>
@@ -45,19 +43,19 @@
                     <h3 class="sub">Servicio:</h3>
                     <select name="servicio" class="input-servicio" required>
                         <option value="montaje">Montaje</option>
-                        <option value="ambientacion">Ambientación</option> 
+                        <option value="ambientacion">Ambientación</option>
                         <option value="vestuario">Vestuario</option>
                         <option value="ninguno">Ninguno</option>
                     </select>
-                </div>         
+                </div>
                 <div class="sub-container">
                     <h3 class="sub">ID:</h3>
                     <input type="text" name="id" class="input-id" placeholder="ID" required>
-                </div>    
+                </div>
                 <div class="sub-container">
                     <h3 class="sub">Descripción:</h3>
                     <textarea name="descripcion" class="input-descripcion" placeholder="Descripción" required></textarea>
-                </div>   
+                </div>
                 <div class="sub-container">
                     <h3 class="sub">Imagen 1:</h3>
                     <label for="file-upload1" class="custom-file-upload">
@@ -85,9 +83,9 @@
                 <div class="button-container">
                     <button type="submit">Guardar Cambios</button>
                 </div>
-            </form>  
-        </section> 
+            </form>
+        </section>
     </main>
-    <script src="app.js"></script>
+    <script src="editar.js"></script>
 </body>
 </html>
