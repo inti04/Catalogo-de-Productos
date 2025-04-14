@@ -31,23 +31,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
         productContainer.innerHTML = `
             <div class="container-info-product">
-                <div class="container-title">${product.nombre}</div>
-                <div class="container-price">
-                    <span>$${product.precio}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="chevron-rigth-icon">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                    </svg> 
-                </div>
                 <div class="container-details-product">
                     <div class="container-description">
                         <div class="title-description">
+                            <h4>Nombre</h4>
+                        </div>
+                        <div class="text-description">
+                            <p>${product.nombre}</p>
+                        </div>
+                    </div>
+                    <div class="container-description">
+                        <div class="title-description">
+                            <h4>Precio</h4>
+                        </div>
+                        <div class="text-description">
+                            <p>$${product.precio}</p>
+                        </div>
+                    </div>
+                    <div class="container-description">
+                        <div class="title-description">
                             <h4>Descripción</h4>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="chevron-down-icon-description">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                            </svg> 
                         </div>
                         <div class="text-description">
                             <p>${product.descripcion}</p>
+                        </div>
+                    </div>
+                    <div class="container-description">
+                        <div class="title-description">
+                            <h4>ID del Producto</h4>
+                        </div>
+                        <div class="text-description">
+                            <p>${product.id}</p>
+                        </div>
+                    </div>
+                    <div class="container-description">
+                        <div class="title-description">
+                            <h4>Tipo de Servicio</h4>
+                        </div>
+                        <div class="text-description">
+                            <p>${product.servicio}</p>
                         </div>
                     </div>
                 </div>

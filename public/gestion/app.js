@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const fileInput2 = document.getElementById('file-upload2');
     const fileInput3 = document.getElementById('file-upload3');
     const nombreInput = document.querySelector('input[name="nombre"]'); // Mover la definición aquí
+    const descripcionInput = document.querySelector('textarea[name="descripcion"]'); // Obtener el campo descripción
+    const MAX_DESCRIPCION_LENGTH = 500; // Definir el límite máximo de caracteres
 
     // Función para manejar el cambio de imagen y mostrar la vista previa
     const handleImageChange = (event, previewElement) => {
@@ -36,10 +38,39 @@ document.addEventListener('DOMContentLoaded', () => {
     fileInput2.addEventListener('change', (event) => handleImageChange(event, imagePreview2));
     fileInput3.addEventListener('change', (event) => handleImageChange(event, imagePreview3));
 
+    // Función para verificar si el ID ya existe
+    const isIdDuplicated = async (id) => {
+        try {
+            const response = await fetch(`/api/products/${id}`);
+            if (response.ok) {
+                const product = await response.json();
+                return !!product; // Si existe un producto, el ID está duplicado
+            }
+            return false; // Si no se encuentra, no está duplicado
+        } catch (error) {
+            console.error('Error verificando ID duplicado:', error);
+            return false;
+        }
+    };
+
     // Manejar el envío del formulario
     productoForm.addEventListener('submit', async (e) => {
         e.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
+
+        // Validar el tamaño del campo descripción
+        if (descripcionInput && descripcionInput.value.length > MAX_DESCRIPCION_LENGTH) {
+            alert(`La descripción excede el número máximo de caracteres (${MAX_DESCRIPCION_LENGTH}).`);
+            return; // Detener el envío del formulario
+        }
+
         const formData = new FormData(productoForm); // Crear un FormData con los datos del formulario
+        const id = formData.get('id'); // Obtener el valor del campo ID
+
+        // Validar si el ID está duplicado
+        if (await isIdDuplicated(id)) {
+            alert('El ID ingresado ya está en uso. Por favor, elija otro.');
+            return; // Detener el envío del formulario
+        }
 
         // Depuración: Inspeccionar el FormData antes de enviarlo
         for (let [key, value] of formData.entries()) {

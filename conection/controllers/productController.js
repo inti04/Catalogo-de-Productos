@@ -83,3 +83,19 @@ exports.updateProduct = async (req, res) => {
         res.status(500).json({ success: false, message: 'Error actualizando producto' });
     }
 };
+
+exports.checkProductId = async (req, res) => {
+    const productId = req.params.id;
+    const query = 'SELECT id FROM productos WHERE id = ?';
+    try {
+        const [results] = await pool.query(query, [productId]);
+        if (results.length === 0) {
+            res.status(404).json(null); // No encontrado
+        } else {
+            res.json({ id: productId }); // ID encontrado
+        }
+    } catch (err) {
+        console.error('Error verificando ID del producto:', err);
+        res.status(500).json({ success: false, message: 'Error verificando ID del producto' });
+    }
+};

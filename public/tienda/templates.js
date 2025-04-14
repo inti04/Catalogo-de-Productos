@@ -11,6 +11,7 @@ export const createProductHTML = (product) => `
             <h2>${product.nombre}</h2>
             <p>cantidad: <span class="product-quantity" data-id="${product.id}">${product.cantidad}</span></p>
             <p>$${product.precio}</p>
+            <p>id:${product.id}</p>
             <button class="btn-add-cart" data-id="${product.id}" ${product.cantidad === 0 ? 'disabled' : ''}>Agregar al carrito</button>
         </div>
     </div>
