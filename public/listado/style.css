@@ -155,6 +155,11 @@ main {
     font-weight: bold;
 }
 
+.listado-table tfoot td {
+    font-weight: bold;
+    text-align: left;
+}
+
 .producto-container {
     display: flex;
     flex-direction: column;

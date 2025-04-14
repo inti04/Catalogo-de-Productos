@@ -99,3 +99,21 @@ exports.checkProductId = async (req, res) => {
         res.status(500).json({ success: false, message: 'Error verificando ID del producto' });
     }
 };
+
+exports.deleteProduct = async (req, res) => {
+    const productId = req.params.id;
+    const query = 'DELETE FROM productos WHERE id = ?';
+
+    try {
+        const [result] = await pool.query(query, [productId]);
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ success: false, message: 'Producto no encontrado' });
+        }
+
+        res.status(200).json({ success: true, message: 'Producto eliminado con éxito' });
+    } catch (err) {
+        console.error('Error eliminando producto:', err);
+        res.status(500).json({ success: false, message: 'Error eliminando producto' });
+    }
+};

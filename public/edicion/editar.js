@@ -58,6 +58,35 @@ document.getElementById('productoEditForm').addEventListener('submit', async fun
     }
 });
 
+document.getElementById('deleteProductButton').addEventListener('click', async function() {
+    const productId = document.querySelector('input[name="id"]').value;
+
+    if (!productId) {
+        alert('No se ha seleccionado un producto para eliminar.');
+        return;
+    }
+
+    const confirmDelete = confirm('¿Estás seguro de que deseas eliminar este producto?');
+    if (!confirmDelete) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/products/${productId}`, {
+            method: 'DELETE'
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al eliminar el producto');
+        }
+
+        alert('Producto eliminado con éxito');
+        document.getElementById('productoEditado').style.display = 'none';
+    } catch (error) {
+        alert(error.message);
+    }
+});
+
 // Actualizar vista previa de las imágenes al cambiarlas
 document.getElementById('file-upload1').addEventListener('change', function() {
     actualizarVistaPrevia(this, 'imagePreview1');
