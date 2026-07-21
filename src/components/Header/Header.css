@@ -1,0 +1,57 @@
+.header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    padding: 0 var(--space-5);
+    height: var(--header-height);
+    margin-bottom: var(--space-6);
+}
+
+.header__logo-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.header__logo {
+    display: block;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Search ocupa el espacio disponible entre el logo y las acciones */
+.header .buscar {
+    flex: 1 1 auto;
+    max-width: 480px;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 0 var(--space-3);
+        gap: var(--space-2);
+    }
+
+    .header .buscar {
+        max-width: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .header {
+        flex-wrap: wrap;
+        height: auto;
+        padding: var(--space-2) var(--space-3);
+    }
+
+    .header .buscar {
+        order: 3;
+        flex-basis: 100%;
+        max-width: none;
+    }
+}

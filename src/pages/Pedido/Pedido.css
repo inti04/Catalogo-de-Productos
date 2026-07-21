@@ -1,0 +1,78 @@
+/* pages/Pedido/Pedido.css */
+.pedido-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.listado-title-container {
+    text-align: start;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
+}
+
+.listado-title {
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+.listado-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--space-5);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.listado-table th,
+.listado-table td {
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.listado-table th {
+    background-color: var(--color-bg);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--color-text-muted);
+}
+
+.listado-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.listado-table tfoot td {
+    font-weight: 700;
+    text-align: left;
+    border-bottom: none;
+    color: var(--color-primary);
+}
+
+.cart-empty {
+    text-align: center;
+    font-size: 1.1em;
+    color: var(--color-text-muted);
+    padding: var(--space-6) 0;
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: var(--space-5);
+    padding: var(--space-2) var(--space-4);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    font-weight: 500;
+    transition: background-color var(--transition-fast);
+}
+
+.back-button:hover {
+    background-color: var(--color-bg);
+}

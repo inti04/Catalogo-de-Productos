@@ -1,0 +1,78 @@
+/*------------------- DESIGN TOKENS -----------------------*/
+:root {
+    --color-bg: #f6f5f3;
+    --color-surface: #ffffff;
+    --color-text: #221f1c;
+    --color-text-muted: #756e66;
+    --color-border: #e7e2dc;
+
+    --color-primary: #c2540d;
+    --color-primary-hover: #a3450a;
+    --color-primary-contrast: #ffffff;
+
+    --color-danger: #c0392b;
+    --color-disabled: #d8d3cc;
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+
+    --shadow-sm: 0 1px 3px rgba(30, 20, 10, 0.08);
+    --shadow-md: 0 8px 20px rgba(30, 20, 10, 0.10);
+    --shadow-lg: 0 16px 36px rgba(30, 20, 10, 0.16);
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+
+    --header-height: 68px;
+
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.25s ease;
+}
+
+/*------------------- GENERAL SECTION -----------------------*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0 auto;
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+}
+
+button {
+    font-family: inherit;
+}
+
+a {
+    color: inherit;
+}
+
+.bottom-footer {
+    min-height: calc(100vh - var(--header-height));
+    padding: 0 var(--space-5) var(--space-6);
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.no-results {
+    text-align: center;
+    color: var(--color-text-muted);
+    padding: var(--space-6) 0;
+    font-size: 1.1rem;
+}
